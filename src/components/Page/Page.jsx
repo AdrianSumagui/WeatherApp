@@ -6,9 +6,9 @@ import styles from './Page.module.css';
 // Importo los componentes.
 import Header from '../Header';
 import Form from '../Form';
-import Error from '../Error';
+/*import Error from '../Error';
 import Loader from '../Loader';
-import Forecast from '../Forecast';
+import Forecast from '../Forecast';*/
 
 const Page = () => {
     return (
@@ -24,14 +24,15 @@ const Page = () => {
 
             {/* Error */}
 
-            <Error/>
+            {/*<Error/>*/}
+
             {/* Loader (Animación de carga.) */}
 
-            <Loader/>
+            {/*<Loader/>*/}
 
             {/* Forecast (Pronóstico del tiempo.) */}
 
-            <Forecast/>
+            {/*<Forecast/>*/}
 
             </div>
 
