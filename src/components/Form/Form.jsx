@@ -10,6 +10,8 @@ const Form = () => {
 
         // Evitamos refrescar la página al pulsar el botón.
         e.preventDefault();
+
+        if (!location || location === '') return;
         
     };
 
@@ -23,10 +25,10 @@ const Form = () => {
                 placeholder="Introduce una ciudad"
                 required
                 
-                // La ciudad que escoga el usuario.
+                // La ciudad que escoja el usuario.
                 value={location} 
                 onChange={e => setLocation(e.target.value)}
-                
+
             />
 
             <button type="submit" className={styles.button} onClick={onSubmit}>
