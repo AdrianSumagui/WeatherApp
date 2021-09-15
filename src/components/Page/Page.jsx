@@ -10,7 +10,12 @@ import Form from '../Form';
 import Loader from '../Loader';
 import Forecast from '../Forecast';*/
 
+import useForecast from '../../hooks/useForecast';
+
 const Page = () => {
+
+    const {isError, isLoading, forecast} = useForecast();
+
     return (
         <Fragment>
 
@@ -20,24 +25,25 @@ const Page = () => {
 
             {/* Formulario para introducir la localidad deseada. */}
 
-            <Form/>
+            {!isLoading && <Form/>}
 
             {/* Error */}
 
-            {/*<Error/>*/}
+            {isError && <Error/>}
 
             {/* Loader (Animación de carga.) */}
 
-            {/*<Loader/>*/}
+            {isLoading && <Loader/>}
 
             {/* Forecast (Pronóstico del tiempo.) */}
 
-            {/*<Forecast/>*/}
+            {forecast && <Forecast/>}
 
             </div>
 
         </Fragment>
     );
+
 };
 
 export default Page;
