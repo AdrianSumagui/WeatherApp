@@ -16,6 +16,12 @@ const Page = () => {
 
     const {isError, isLoading, forecast} = useForecast();
 
+    const onSubmit = (value) => {
+
+        console.log({value});
+
+    }
+
     return (
         <Fragment>
 
@@ -25,19 +31,19 @@ const Page = () => {
 
             {/* Formulario para introducir la localidad deseada. */}
 
-            {!isLoading && <Form/>}
+            {!isLoading && <Form submit = {onSubmit}/>}
 
-            {/* Error */}
+            {/* Error */} 
 
-            {isError && <Error/>}
+            {/*isError && <Error/>*/}
 
             {/* Loader (Animación de carga.) */}
 
-            {isLoading && <Loader/>}
+            {/*isLoading && <Loader/>*/}
 
             {/* Forecast (Pronóstico del tiempo.) */}
 
-            {forecast && <Forecast/>}
+            {/*forecast && <Forecast/>*/} 
 
             </div>
 
