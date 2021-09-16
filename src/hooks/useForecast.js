@@ -21,14 +21,20 @@ const useForecast = () => {
     const [isLoading, setLoading] = useState(false)
     const [forecast, setForecast] = useState(null)
 
-    const submitRequest = location => {
+    const submitRequest = async location => {
 
         // Encontrar la ID de la ubicación.
 
-        const response = axios(`${REQUEST_URL}/search`, {params: {query: location}});
+        const {data} = await axios(`${REQUEST_URL}/search`, {params: {query: location}});
 
         // Obtener pronóstico.
-        console.log({response});
+        console.log({data});
+
+        if (!data || data.length === 0) {
+
+            // Mostrar error.
+
+        };
 
 
 
