@@ -6,19 +6,19 @@ import styles from './Page.module.css';
 // Importo los componentes.
 import Header from '../Header';
 import Form from '../Form';
-/*import Error from '../Error';
+import Error from '../Error';
 import Loader from '../Loader';
-import Forecast from '../Forecast';*/
+import Forecast from '../Forecast';
 
 import useForecast from '../../hooks/useForecast';
 
 const Page = () => {
 
-    const {isError, isLoading, forecast} = useForecast();
+    const {isError, isLoading, forecast, submitRequest} = useForecast();
 
-    const onSubmit = (value) => {
+    const onSubmit = value => {
 
-        console.log({value});
+        submitRequest(value);
 
     }
 
@@ -35,17 +35,17 @@ const Page = () => {
 
             {/* Error */} 
 
-            {/*isError && <Error/>*/}
+            {isError && <Error message = {isError}/>}
 
             {/* Loader (Animación de carga.) */}
 
-            {/*isLoading && <Loader/>*/}
+            {isLoading && <Loader/>}
+
+            </div>
 
             {/* Forecast (Pronóstico del tiempo.) */}
 
-            {/*forecast && <Forecast/>*/} 
-
-            </div>
+            {forecast && <Forecast/>} 
 
         </Fragment>
     );

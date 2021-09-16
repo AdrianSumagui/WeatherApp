@@ -17,7 +17,7 @@ const useForecast = () => {
     };
 
     return {
-        isError, isLoading, forecast
+        isError, isLoading, forecast, submitRequest
     };
 
 };
