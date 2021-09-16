@@ -33,6 +33,7 @@ const useForecast = () => {
         if (!data || data.length === 0) {
 
             // Mostrar error.
+            console.log('Introduce una ciudad.');
 
         };
 
