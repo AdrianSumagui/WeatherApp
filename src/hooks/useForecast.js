@@ -21,23 +21,57 @@ const useForecast = () => {
     const [isLoading, setLoading] = useState(false)
     const [forecast, setForecast] = useState(null)
 
-    const submitRequest = async location => {
+    // Obtener la ID de la ubicación.
 
-        // Encontrar la ID de la ubicación.
+    const getWoeid = async location => {
 
         const {data} = await axios(`${REQUEST_URL}/search`, {params: {query: location}});
-
-        // Obtener pronóstico.
-        console.log({data});
 
         if (!data || data.length === 0) {
 
             // Mostrar error.
-            console.log('Introduce una ciudad.');
+            setError('No existe esa ciudad. :(');
+            setLoading(false);
+            return;
 
         };
 
+        return data[0];
 
+    };
+
+    // Obtener pronóstico meteorilógico.
+
+    const getForecastData = async woeid => {
+
+        const {data} = await axios(`${REQUEST_URL}/${woeid}`);
+
+        if (!data || data.length === 0) {
+
+            // Mostrar error.
+            setError('Algo va mal. :(');
+            setLoading(false);
+            return;
+
+        };
+
+        return data;
+
+    }
+
+    // Mostrar resultados.
+
+    const submitRequest = async location => {
+
+        setLoading(true);
+        setError(false);
+
+        const response = await getWoeid(location);;
+        if (!response?.woeid) return;
+        const data = await getForecastData(response.woeid);
+        if (!data) return;
+
+        console.log({data});
 
     };
 

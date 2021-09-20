@@ -27,7 +27,7 @@ const Page = () => {
 
             <Header />
 
-            <div className= {styles.box}>
+            <div className= {`${styles.box} position-relative`}>
 
             {/* Formulario para introducir la localidad deseada. */}
 
