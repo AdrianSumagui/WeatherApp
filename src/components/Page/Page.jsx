@@ -27,25 +27,30 @@ const Page = () => {
 
             <Header />
 
-            <div className= {`${styles.box} position-relative`}>
+            {!forecast && (
 
-            {/* Formulario para introducir la localidad deseada. */}
+                <div className= {`${styles.box} position-relative`}>
 
-            {!isLoading && <Form submit = {onSubmit}/>}
+                {/* Formulario para introducir la localidad deseada. */}
 
-            {/* Error */} 
+                {!isLoading && <Form submit = {onSubmit}/>}
 
-            {isError && <Error message = {isError}/>}
+                {/* Error */} 
 
-            {/* Loader (Animación de carga.) */}
+                {isError && <Error message = {isError}/>}
 
-            {isLoading && <Loader/>}
+                {/* Loader (Animación de carga.) */}
 
-            </div>
+                {isLoading && <Loader/>}
+
+                </div>
+
+            )}
+
 
             {/* Forecast (Pronóstico del tiempo.) */}
 
-            {forecast && <Forecast/>} 
+            {forecast && <Forecast forecast = {forecast}/>} 
 
         </Fragment>
     );

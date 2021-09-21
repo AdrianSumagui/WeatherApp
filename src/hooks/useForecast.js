@@ -1,6 +1,12 @@
 import { useState } from "react";
 import axios from "axios";
 
+// Funciones importadas que contienen los datos del pronóstico del tiempo.
+
+import getCurrentDayForecast from '../helpers/getCurrentDayForecast';
+import getCurrentDayDetailedForecast from '../helpers/getCurrentDayDetailedForecast';
+import getUpcomingDaysForecast from '../helpers/getUpcomingDaysForecast';
+
 // URL de la API donde sacaremos el pronóstico del tiempo.
 
 const BASE_URL = 'https://www.metaweather.com/api/location';
@@ -61,6 +67,17 @@ const useForecast = () => {
 
     // Mostrar resultados.
 
+    const gatherForecastData = (data) => {
+
+        const currentDay = getCurrentDayForecast(data.consolidated_weather[0], data.title);
+        const currentDayDetailed = getCurrentDayDetailedForecast(data.consolidated_weather[0]);
+        const upcomingDays = getUpcomingDaysForecast(data.consolidated_weather);
+
+        setForecast({currentDay, currentDayDetailed, upcomingDays});
+        setLoading(false);
+
+    }
+
     const submitRequest = async location => {
 
         setLoading(true);
@@ -71,7 +88,7 @@ const useForecast = () => {
         const data = await getForecastData(response.woeid);
         if (!data) return;
 
-        console.log({data});
+        gatherForecastData(data);
 
     };
 
