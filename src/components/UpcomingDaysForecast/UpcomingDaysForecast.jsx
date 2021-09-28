@@ -11,6 +11,6 @@ const UpcomingDaysForecast = ({days}) => <ul className={`${styles.weekList} d-fl
 
     ))};
 
-</ul>;
+</ul>
 
 export default UpcomingDaysForecast;
